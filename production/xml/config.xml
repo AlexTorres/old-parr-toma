@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<backURL>
+		<![CDATA[http://www.alexgamer.net/oldParr]]>
+	</backURL>
+	<frontURL>
+		<![CDATA[http://www.alexgamer.net/oldParr]]>
+	</frontURL>
+	<audioPath>
+		<![CDATA[/assets/audio/]]>
+	</audioPath>
+	<imagesPath>
+		<![CDATA[/assets/images/]]>
+	</imagesPath>
+	<xmlPath>
+		<![CDATA[/xml/]]>
+	</xmlPath>
+		<swfPath>
+		<![CDATA[/assets/swf/]]>
+	</swfPath>
+	<videoPath>
+		<![CDATA[/assets/videos/]]>
+	</videoPath>
+</data>
