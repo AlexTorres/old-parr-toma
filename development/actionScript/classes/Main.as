@@ -4,6 +4,8 @@ package
 	import co.oldparr.toma.TomaContext;
 	import flash.events.Event;
 	import org.casalib.display.CasaSprite;
+	import flash.display.StageScaleMode;
+	import flash.display.StageAlign;
 	
 	/**
 	 * ...
@@ -21,6 +23,8 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
 			context = new TomaContext(this);
 			// entry point
 			

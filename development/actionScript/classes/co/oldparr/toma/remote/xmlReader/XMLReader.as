@@ -29,7 +29,7 @@ package co.oldparr.toma.remote.xmlReader
 			
 			var urlXML:String;
 			if (LocationUtil.isWeb(contextView))
-				urlXML = "/xml/config.xml";
+				urlXML = "xml/config.xml";
 			else
 				urlXML = "../../xml/config.xml";
 		
