@@ -1,7 +1,11 @@
 package co.oldparr.toma 
 {
-	import co.oldparr.toma.remote.IXMLReader;
-	import co.oldparr.toma.remote.XMLReader;
+	import co.oldparr.toma.controller.AddMainWindowCommand;
+	import co.oldparr.toma.event.RemoteEvent;
+	import co.oldparr.toma.remote.xmlReader.IXMLReader;
+	import co.oldparr.toma.remote.xmlReader.XMLReader;
+	import co.oldparr.toma.view.mainWindow.MainWindowView;
+	import co.oldparr.toma.view.mainWindow.MainWindowMediator;
 	import flash.display.DisplayObjectContainer;
 	import org.robotlegs.mvcs.Context;
 	import co.oldparr.toma.model.TomaModel;
@@ -22,9 +26,11 @@ package co.oldparr.toma
 		}
 		override public function startup():void
 		{
-			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE,StarUpCommand, ContextEvent, true);
+			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE, StarUpCommand, ContextEvent, true);
+			commandMap.mapEvent(RemoteEvent.ON_XML_READED,AddMainWindowCommand, RemoteEvent);
 			injector.mapSingleton(TomaModel);
 			injector.mapSingletonOf( IXMLReader, XMLReader );
+			mediatorMap.mapView(MainWindowView, MainWindowMediator);
 			super.startup();	
 			
 		}

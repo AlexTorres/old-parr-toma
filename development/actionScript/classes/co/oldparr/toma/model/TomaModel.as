@@ -72,6 +72,16 @@ package co.oldparr.toma.model
 			_imagePath = value;
 		}
 		
+		public function get swfPath():String 
+		{
+			return _swfPath;
+		}
+		
+		public function set swfPath(value:String):void 
+		{
+			_swfPath = value;
+		}
+		
 		
 	}
 

@@ -1,6 +1,7 @@
-package co.oldparr.toma.remote 
+package co.oldparr.toma.remote.xmlReader 
 {
 	import flash.display.DisplayObjectContainer;
+	import org.casalib.load.DataLoad;
 	
 	/**
 	 * ...
@@ -9,6 +10,7 @@ package co.oldparr.toma.remote
 	public interface IXMLReader 
 	{
 		function onLoad(contextView:DisplayObjectContainer):void;
+		function get dataLoad():DataLoad;
 	}
 	
 }

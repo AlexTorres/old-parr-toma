@@ -1,6 +1,6 @@
 package co.oldparr.toma.controller 
 {
-	import co.oldparr.toma.remote.IXMLReader;
+	import co.oldparr.toma.remote.xmlReader.IXMLReader;
 	import org.robotlegs.mvcs.Command;
 	
 	/**

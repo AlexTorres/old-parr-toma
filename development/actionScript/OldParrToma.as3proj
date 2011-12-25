@@ -50,10 +50,11 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="swc\CasaLib_1.4.1.swc" />
     <element path="swc\FacebookGraphAPI.swc" />
     <element path="swc\greensock.swc" />
     <element path="swc\robotlegs-framework-v1.5.2.swc" />
+    <element path="swc\Componets.swc" />
+    <element path="swc\CasaLib_1.4.1.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -85,7 +86,7 @@
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
   <options>
-    <option showHiddenPaths="False" />
+    <option showHiddenPaths="True" />
     <option testMovie="Default" />
   </options>
   <!-- Plugin storage -->

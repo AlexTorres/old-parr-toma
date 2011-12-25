@@ -1,5 +1,7 @@
-package co.oldparr.toma.remote 
+package co.oldparr.toma.remote.xmlReader 
 {
+	import co.oldparr.toma.event.RemoteEvent;
+	import co.oldparr.toma.model.TomaModel;
 	import flash.display.DisplayObjectContainer;
 	import flash.events.Event;
 	import org.robotlegs.mvcs.Actor;
@@ -13,9 +15,10 @@ package co.oldparr.toma.remote
 	 */
 	public class XMLReader extends Actor  implements IXMLReader
 	{
+		[Inject]
+		public var model:TomaModel;
 		
-		
-		protected var dataLoad:DataLoad;
+		protected var _dataLoad:DataLoad;
 		
 		public function XMLReader() 
 		{
@@ -29,17 +32,25 @@ package co.oldparr.toma.remote
 				urlXML = "/xml/config.xml";
 			else
 				urlXML = "../../xml/config.xml";
-			trace(urlXML);
-			this.dataLoad = new DataLoad(urlXML);
-            this.dataLoad.addEventListener(LoadEvent.COMPLETE, onComplete);
-			this.dataLoad.start();
+		
+			this._dataLoad = new DataLoad(urlXML);
+			eventMap.mapListener(_dataLoad, LoadEvent.COMPLETE, onComplete);
+           
+			this._dataLoad.start();
+		
 		}
 		
 		private function onComplete(e:LoadEvent):void 
 		{
-			trace(this.dataLoad.dataAsXml);
-		
+			eventMap.unmapListener(_dataLoad, LoadEvent.COMPLETE, onComplete);
+			dispatch(new RemoteEvent(RemoteEvent.ON_XML_READED));
 		}
+		
+		public function get dataLoad():DataLoad 
+		{
+			return _dataLoad;
+		}
+		
 		
 	
 	}
