@@ -21,4 +21,7 @@
 	<videoPath>
 		<![CDATA[/assets/videos/]]>
 	</videoPath>
+	<facebookAppID>
+		<![CDATA[204888432932799]]>
+	</facebookAppID>
 </data>

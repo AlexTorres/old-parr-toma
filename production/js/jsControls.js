@@ -1,7 +1,9 @@
 // JavaScript Document
-var APP_ID = "204888432932799";                     
+var APP_ID = "204888432932799";
+var d = new Date();
+                 
 var REDIRECT_URI = "http://www.alexgamer.net/oldParr";                
-var PERMS = "email,publish_stream,offline_access,read_stream"; //comma separated list of extended permissions
+var PERMS = "email,publish_stream,offline_access,read_stream,friends_photos,friends_photos,user_photos,user_birthday,user_hometown,user_location,user_videos"; //comma separated list of extended permissions
 
 $(document).on("ready", onStart);
 function onStart()
@@ -27,7 +29,7 @@ function handleLoginStatus(response)
    
     if (response.status == "connected") 
     { 
-        swfobject.embedSWF("assets/swf/OldParrToma.swf", "flashContent", "100%", "100%", "10.0", null, null, null, {name:"flashContent"});
+        swfobject.embedSWF("assets/swf/OldParrToma.swf?rnd"+d.getTime(), "flashContent", "100%", "100%", "10.0", null, null, null, {name:"flashContent"});
        
     } 
     else 

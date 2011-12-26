@@ -55,6 +55,7 @@
     <element path="swc\robotlegs-framework-v1.5.2.swc" />
     <element path="swc\Componets.swc" />
     <element path="swc\CasaLib_1.4.1.swc" />
+    <element path="swc\MonsterDebugger.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

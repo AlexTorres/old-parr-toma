@@ -10,6 +10,7 @@ package co.oldparr.toma.event
 	{
 		
 		public static const ON_XML_READED:String = "onXMLReaded";
+		public static const ON__FACEBOOK_READY:String = "onFacebookReady";
 		public function RemoteEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false) 
 		{ 
 			super(type, bubbles, cancelable);
