@@ -6,7 +6,7 @@ This service manages all the users registration for the App.
 After the Facebook login, Alex makes a call to the service with the
 following parameters via post.
 
-User struct:
+User struct:  
 __id:__ Autonum  
 __email:__ The user email (mandatory)  
 __name:__ The user name (mandatory)  
