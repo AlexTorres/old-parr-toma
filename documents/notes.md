@@ -20,9 +20,9 @@ Services responses
 ==================
 The service can reply different messages according to each case:
 
-__New user logged in:__ new_user_logged_in
-__Old user logged in:__ old_user_logged_in
-__Login error:__ loggin_error
+__New user logged in:__ new_user_logged_in  
+__Old user logged in:__ old_user_logged_in  
+__Login error:__ loggin_error  
 
 `{message: 'message_string'}`  
 Where `'message_string'` is the message identifier.
