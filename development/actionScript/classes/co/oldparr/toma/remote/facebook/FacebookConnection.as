@@ -6,14 +6,14 @@ package co.oldparr.toma.remote.facebook
 	import org.casalib.util.StageReference;
 	import com.adobe.serialization.json.JSON;
 	import com.facebook.graph.Facebook;
-	
+	import com.demonsters.debugger.MonsterDebugger;
 	/**
 	 * ...
 	 * @author John Alexander Torres
 	 */
 	public class FacebookConnection extends Actor implements IFacebookConnection
 	{
-		public static const FRIEND_PICTURE:String = "http://graph.facebook.com/{0}/picture";
+		public static const FRIEND_PICTURE:String = "https://graph.facebook.com/{0}/picture?access_token=";
 		public static const USER_PHOTO:String = "https://graph.facebook.com/me/picture?type=large&access_token=";
 		protected static const LIMIT_ITEMS:Object = {limit: 10};
 		protected static const USER_INFO:String = "/me";
@@ -30,7 +30,7 @@ package co.oldparr.toma.remote.facebook
 		
 		public function FacebookConnection()
 		{
-			
+			MonsterDebugger.initialize(this);
 			super();
 		}
 		
@@ -38,6 +38,7 @@ package co.oldparr.toma.remote.facebook
 		{
 		
 			Facebook.init(this.appID, onInit);
+			
 		
 		}
 		
@@ -78,6 +79,7 @@ package co.oldparr.toma.remote.facebook
 			if (result)
 			{
 				_friendsArray = result as Array;
+				MonsterDebugger.trace(this,_friendsArray);
 				Facebook.api(USER_PHOTOS, onUserPhotos, LIMIT_ITEMS, "GET");
 			}
 			else

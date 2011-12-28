@@ -1,13 +1,15 @@
 package co.oldparr.toma.view.mainWindow
 {
 	import co.oldparr.toma.event.RemoteEvent;
+	import co.oldparr.toma.event.ViewsEvent;
 	import co.oldparr.toma.model.TomaModel;
 	import co.oldparr.toma.remote.facebook.IFacebookConnection;
 	import co.oldparr.toma.remote.xmlReader.IXMLReader;
+	import co.oldparr.toma.view.friendsView.FriendsView;
+	import co.oldparr.toma.view.userInfoView.UserInfoView;
 	import flash.events.Event;
 	import org.casalib.display.CasaSprite;
 	import org.robotlegs.mvcs.Mediator;
-	import com.demonsters.debugger.MonsterDebugger;
 	
 	
 	/**
@@ -30,7 +32,7 @@ package co.oldparr.toma.view.mainWindow
 		
 		public function MainWindowMediator()
 		{
-			MonsterDebugger.initialize(this);
+		
 			super();
 		}
 		
@@ -64,12 +66,30 @@ package co.oldparr.toma.view.mainWindow
 			contextView.stage.dispatchEvent(new Event(Event.RESIZE));
 			fbservice.onLoadFacebookInfo();
 			eventMap.mapListener(eventDispatcher, RemoteEvent.ON__FACEBOOK_READY, onFBDataReady);
+			eventMap.mapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
+			
+		}
+		
+		private function onFinishUserPhoto(e:ViewsEvent):void 
+		{
+			eventMap.unmapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
+			view.sections.y = TomaModel.USER_INFO_POINT.y + e.data.height + 10;
+			var friendsView:FriendsView = new FriendsView();
+			friendsView.y = view.sections.y +view.sections.height;
+			friendsView.x = 110;
+			view.addChild(friendsView);
+			
+	
 			
 		}
 		
 		private function onFBDataReady(e:RemoteEvent):void 
 		{
-			MonsterDebugger.trace(this,"hell yea");
+			
+			var userInfoView:UserInfoView=new UserInfoView;
+			view.addChild(userInfoView);
+			userInfoView.x = TomaModel.USER_INFO_POINT.x;
+			userInfoView.y = TomaModel.USER_INFO_POINT.y;
 		}
 		
 		private function onResize(e:Event):void 
