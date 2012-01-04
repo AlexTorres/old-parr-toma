@@ -16,11 +16,21 @@ package co.oldparr.toma
 	import co.oldparr.toma.view.imageView.ImageViewMediator;
 	import co.oldparr.toma.view.mainWindow.MainWindowMediator;
 	import co.oldparr.toma.view.mainWindow.MainWindowView;
+	import co.oldparr.toma.view.photosView.PhotosView;
+	import co.oldparr.toma.view.photosView.PhotosViewMediator;
 	import co.oldparr.toma.view.userInfoView.UserInfoView;
 	import co.oldparr.toma.view.userInfoView.UserInfoViewMediator;
+	import co.oldparr.toma.view.userWallView.UserWallView;
+	import co.oldparr.toma.view.userWallView.UserWallViewMediator;
+	import co.oldparr.toma.view.userWallView.WallLink.WallLinkView;
+	import co.oldparr.toma.view.userWallView.WallLink.WallLinkViewMediator;
+	import co.oldparr.toma.view.userWallView.WallStatus.WallStatusView;
+	import co.oldparr.toma.view.userWallView.WallStatus.WallStatusViewMediator;
 	import flash.display.DisplayObjectContainer;
 	import org.robotlegs.base.ContextEvent;
 	import org.robotlegs.mvcs.Context;
+	import co.oldparr.toma.view.photosView.photoView.PhotoView;
+	import co.oldparr.toma.view.photosView.photoView.PhotoViewMediator;
 
 	
 	/**
@@ -46,6 +56,11 @@ package co.oldparr.toma
 			mediatorMap.mapView(ImageView, ImageViewMediator);
 			mediatorMap.mapView(FriendsView, FriendsViewMediator);
 			mediatorMap.mapView(FriendView, FriendViewMediator);
+			mediatorMap.mapView(PhotosView, PhotosViewMediator);
+			mediatorMap.mapView(PhotoView, PhotoViewMediator);
+			mediatorMap.mapView(UserWallView, UserWallViewMediator);
+			mediatorMap.mapView(WallStatusView, WallStatusViewMediator);
+			mediatorMap.mapView(WallLinkView, WallLinkViewMediator);
 			super.startup();	
 			
 		}

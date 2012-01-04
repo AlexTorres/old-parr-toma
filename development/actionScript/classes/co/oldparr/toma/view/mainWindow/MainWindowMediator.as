@@ -6,7 +6,9 @@ package co.oldparr.toma.view.mainWindow
 	import co.oldparr.toma.remote.facebook.IFacebookConnection;
 	import co.oldparr.toma.remote.xmlReader.IXMLReader;
 	import co.oldparr.toma.view.friendsView.FriendsView;
+	import co.oldparr.toma.view.photosView.PhotosView;
 	import co.oldparr.toma.view.userInfoView.UserInfoView;
+	import co.oldparr.toma.view.userWallView.UserWallView;
 	import flash.events.Event;
 	import org.casalib.display.CasaSprite;
 	import org.robotlegs.mvcs.Mediator;
@@ -78,11 +80,27 @@ package co.oldparr.toma.view.mainWindow
 			friendsView.y = view.sections.y +view.sections.height;
 			friendsView.x = 110;
 			view.addChild(friendsView);
+			onAddPhotosView();
+			onAddWallView();
 			
 	
 			
 		}
 		
+		private function onAddWallView():void 
+		{
+			var userWallView:UserWallView = new UserWallView();
+			view.addChild(userWallView);
+			userWallView.x = 301.85;
+			userWallView.y = 280.95;
+		}
+		private function onAddPhotosView():void
+		{
+			var photosView:PhotosView = new PhotosView();
+			view.addChild(photosView);
+			photosView.y = 161.35;
+			photosView.x = 304.85;
+		}
 		private function onFBDataReady(e:RemoteEvent):void 
 		{
 			

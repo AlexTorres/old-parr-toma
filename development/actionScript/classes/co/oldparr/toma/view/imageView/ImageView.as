@@ -1,12 +1,16 @@
 package co.oldparr.toma.view.imageView 
 {
 	import co.oldparr.toma.event.ViewsEvent;
+	import flash.display.Bitmap;
+	import flash.display.Loader;
 	import flash.events.Event;
+	import flash.net.URLRequest;
 	import org.casalib.display.CasaSprite;
 	import org.casalib.events.LoadEvent;
 	import org.casalib.load.ImageLoad;
 	import flash.system.LoaderContext;
 	import flash.system.Security;
+	import flash.events.SecurityErrorEvent;
 	
 	/**
 	 * ...
@@ -17,13 +21,19 @@ package co.oldparr.toma.view.imageView
 	{
 		[Inject]
 		public var view:ImageView;
-		protected var imageLoad:ImageLoad;
+		protected var imageLoad:Loader;
 		private var _imageURL:String;
 		public function ImageView() 
 		{
-			Security.loadPolicyFile("http://graph.facebook.com/crossdomain.xml");
-			Security.loadPolicyFile("http://profile.ak.fbcdn.net/crossdomain.xml");
+			Security.loadPolicyFile("https://graph.facebook.com/crossdomain.xml");
+			Security.loadPolicyFile("https://profile.ak.fbcdn.net/crossdomain.xml");
 			Security.loadPolicyFile("https://fbcdn-profile-a.akamaihd.net/crossdomain.xml");
+			Security.loadPolicyFile("https://s-external.ak.fbcdn.net/crossdomain.xml?__cb=55448555654");
+			Security.loadPolicyFile("https://s-static.ak.facebook.com/crossdomain.xml?__cb=55448555654");
+			
+			Security.loadPolicyFile("https://www.facebook.com/crossdomain.xml?__cb=55448555654");
+			Security.allowDomain("*");
+
 			super();
 		}
 		
@@ -31,15 +41,26 @@ package co.oldparr.toma.view.imageView
 		{
 			var lc:LoaderContext = new LoaderContext();
 			lc.checkPolicyFile = true;
-			this.imageLoad = new ImageLoad(this.imageURL,lc);
-            this.imageLoad.addEventListener(LoadEvent.COMPLETE, this.onComplete,false,0,true);
-            this.imageLoad.start()
+			imageLoad = new Loader();
+			imageLoad.load(new URLRequest(this.imageURL), lc);
+			this.imageLoad.contentLoaderInfo.addEventListener(Event.COMPLETE, this.onComplete, false, 0, true);
+		
+			
+          
 		}
 		
-		private function onComplete(e:LoadEvent):void 
+		private function onSecurity(e:SecurityErrorEvent):void 
 		{
-			this.addChild(this.imageLoad.contentAsBitmap);
-			this.dispatchEvent(new ViewsEvent(ViewsEvent.ON_IMAGE_FINISH_LOAD,false,false,this));
+			trace("::errorHandler");
+		}
+		
+		private function onComplete(e:Event):void 
+		{
+			this.imageLoad.content.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onSecurity);
+			var content:Bitmap = this.imageLoad.content as Bitmap;
+			content.smoothing = true;
+			this.addChild(content);
+			this.dispatchEvent(new ViewsEvent(ViewsEvent.ON_IMAGE_FINISH_LOAD,true,true,this));
 		}
 		public function get imageURL():String 
 		{

@@ -30,9 +30,10 @@ package co.oldparr.toma.view.imageView
 		
 		private function onImageLoad(e:ViewsEvent):void 
 		{
+			
 			removeViewListener(ViewsEvent.ON_IMAGE_FINISH_LOAD, onImageLoad);
 			
-			e.stopPropagation();
+		
 			dispatch(e);
 			
 		}

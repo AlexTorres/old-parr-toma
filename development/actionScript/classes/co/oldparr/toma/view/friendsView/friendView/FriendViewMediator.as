@@ -38,19 +38,11 @@ package co.oldparr.toma.view.friendsView.friendView
 			
 			userPhoto.imageURL =view.urlImageFriend;
 			userPhoto.onLoad();
-			eventMap.mapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
+		
 		}
 		
 		
-		private function onFinishUserPhoto(e:ViewsEvent):void 
-		{
-			
-			e.stopImmediatePropagation();
-			e.stopPropagation();
-			//dispatch(new ViewsEvent(ViewsEvent.ON_FRIEND_USER_LOAD));
-			
-		}
-		
+	
 	}
 
 }

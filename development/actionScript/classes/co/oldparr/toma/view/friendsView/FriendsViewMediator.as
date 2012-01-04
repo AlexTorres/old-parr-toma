@@ -5,7 +5,7 @@ package co.oldparr.toma.view.friendsView
 	import co.oldparr.toma.view.friendsView.friendView.FriendView;
 	import flash.events.Event;
 	import org.robotlegs.mvcs.Mediator;
-	import com.demonsters.debugger.MonsterDebugger;
+	
 	import co.oldparr.toma.remote.facebook.FacebookConnection;
 	
 	/**
@@ -21,7 +21,6 @@ package co.oldparr.toma.view.friendsView
 		
 		public function FriendsViewMediator() 
 		{
-			MonsterDebugger.initialize(this);
 			super();
 		}
 		override public function onRegister():void
@@ -42,7 +41,7 @@ package co.oldparr.toma.view.friendsView
 
 			for (var i:int = 0; i < fbservice.friendsArray.length; i++ )
 			{
-				MonsterDebugger.trace(this, fbservice.friendsArray[i].id);
+	
 				var friendview:FriendView = new FriendView();
 				view.addChild(friendview);
 				friendview.y = 10 + ((friendview.height+10) * i);
