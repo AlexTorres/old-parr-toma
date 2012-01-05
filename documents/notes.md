@@ -52,3 +52,9 @@ The system will have a backend that allows an identified user to access the foll
 * __Download user data:__ A link to download an excel document, containing all the registered user data.
 * __View error log:__ A page in which an admin can see the error log.
 * __View login log:__ A page in which an admin can see the login log.
+
+
+Access account
+==============
+oldparrtoma@gmail.com  
+Old.Parr.2012
