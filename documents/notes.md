@@ -45,3 +45,16 @@ Each time a user logs in, the system will log the following:
 * __user_id:__ This is the local id of the logged in user.  
 * __IP:__ The user IP address.  
 * __date:__ The date/time of the login event.  
+
+Backend access and features
+===========================
+The system will have a backend that allows an identified user to access the following:
+* __Download user data:__ A link to download an excel document, containing all the registered user data.
+* __View error log:__ A page in which an admin can see the error log.
+* __View login log:__ A page in which an admin can see the login log.
+
+
+Access account
+==============
+oldparrtoma@gmail.com  
+Old.Parr.2012
