@@ -39,8 +39,24 @@ package co.oldparr.toma.view.userInfoView
 			view.userName.autoSize = view.bornCityView.bornCity.autoSize = view.currentCityView.currentCity.autoSize = view.BornDate.bornDateText.autoSize = TextFieldAutoSize.LEFT;
 			
 			view.userName.text = (fbservice.userObject.name != null) ? fbservice.userObject.name: ""; 
-			view.bornCityView.bornCity.text = (fbservice.userObject.hometown.name !=null) ? fbservice.userObject.hometown.name: ""; 
-			view.currentCityView.currentCity.text = (fbservice.userObject.location.name != null) ? fbservice.userObject.location.name: ""; 
+			if (fbservice.userObject.hometown != null)
+			{
+				view.bornCityView.bornCity.text =fbservice.userObject.hometown.name
+			}
+			else
+			{
+				view.bornCityView.bornCity.text = "Colombia";
+			}
+			if (fbservice.userObject.location!= null)
+			{
+				view.currentCityView.currentCity.text = fbservice.userObject.location.name;
+			}
+			else
+			{
+				view.currentCityView.currentCity.text = "Colombia";
+			}
+			//view.bornCityView.bornCity.text = (fbservice.userObject.hometown.name !=null) ? fbservice.userObject.hometown.name: ""; 
+			//view.currentCityView.currentCity.text = (fbservice.userObject.location.name != null) ? fbservice.userObject.location.name: ""; 
 			var stringBorn:String = "";
 			if (fbservice.userObject.birthday != null)
 			{

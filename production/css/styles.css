@@ -1,11 +1,26 @@
- html, body, #containerA, #containerB 
- {
-	  height:100%; 
- }
- body 
- { 
- 	margin:0; 
-	padding:0; 
-	overflow:hidden;
- }
+html, body, #containerA, #containerB 
+{
+	height:100%;
+	
+}
+body 
+{
+	margin:0;
+	padding:0;
 
+}
+#facebookConnection
+{
+	background-image: url(../assets/images/home.jpg);
+	background-repeat: no-repeat;
+	height: 862px;
+	width: 1420px;
+
+}
+#imageItem
+{
+	cursor: pointer;
+	left: 1000px;
+	top: 256px;
+	position: relative;
+}

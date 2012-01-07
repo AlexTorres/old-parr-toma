@@ -15,6 +15,7 @@ package co.oldparr.toma.controller
 		{
 			var mainWindow:MainWindowView = new MainWindowView();
 			contextView.addChild(mainWindow); 
+			
 		}
 	}
 

@@ -6,6 +6,7 @@ package
 	import org.casalib.display.CasaSprite;
 	import flash.display.StageScaleMode;
 	import flash.display.StageAlign;
+	import org.casalib.util.AlignUtil;
 	
 	/**
 	 * ...

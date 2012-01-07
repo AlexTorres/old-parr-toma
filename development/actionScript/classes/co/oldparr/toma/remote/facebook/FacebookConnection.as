@@ -92,7 +92,7 @@ package co.oldparr.toma.remote.facebook
 			
 			if (result)
 			{
-				var fbquery:String = 'SELECT post_id, actor_id, target_id, message,source_id FROM stream WHERE source_id = me()  AND message!=""LIMIT 20';
+				var fbquery:String = 'SELECT post_id, actor_id, target_id, message,source_id FROM stream WHERE source_id = me()  AND message!="" LIMIT 20';
 				_photosArray = result as Array;
 				Facebook.fqlQuery(fbquery,onUserFeed);
 			}

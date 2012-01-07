@@ -31,6 +31,7 @@ package co.oldparr.toma.view.mainWindow
 		
 		private var faceBookColor:int = 0x465A99;
 		private var spacer:CasaSprite;
+		private var offSet:Number = 503;
 		
 		public function MainWindowMediator()
 		{
@@ -78,7 +79,7 @@ package co.oldparr.toma.view.mainWindow
 			view.sections.y = TomaModel.USER_INFO_POINT.y + e.data.height + 10;
 			var friendsView:FriendsView = new FriendsView();
 			friendsView.y = view.sections.y +view.sections.height;
-			friendsView.x = 110;
+			friendsView.x = 9-offSet;
 			view.addChild(friendsView);
 			onAddPhotosView();
 			onAddWallView();
@@ -91,7 +92,7 @@ package co.oldparr.toma.view.mainWindow
 		{
 			var userWallView:UserWallView = new UserWallView();
 			view.addChild(userWallView);
-			userWallView.x = 301.85;
+			userWallView.x = 210.85-offSet;
 			userWallView.y = 280.95;
 		}
 		private function onAddPhotosView():void
@@ -99,14 +100,14 @@ package co.oldparr.toma.view.mainWindow
 			var photosView:PhotosView = new PhotosView();
 			view.addChild(photosView);
 			photosView.y = 161.35;
-			photosView.x = 304.85;
+			photosView.x = 213.85-offSet;
 		}
 		private function onFBDataReady(e:RemoteEvent):void 
 		{
 			
 			var userInfoView:UserInfoView=new UserInfoView;
 			view.addChild(userInfoView);
-			userInfoView.x = TomaModel.USER_INFO_POINT.x;
+			userInfoView.x = TomaModel.USER_INFO_POINT.x-offSet;
 			userInfoView.y = TomaModel.USER_INFO_POINT.y;
 		}
 		
@@ -120,6 +121,7 @@ package co.oldparr.toma.view.mainWindow
 				
 			}
 			
+			view.x=((contextView.stage.stageWidth)/2)
 		}
 	
 	}

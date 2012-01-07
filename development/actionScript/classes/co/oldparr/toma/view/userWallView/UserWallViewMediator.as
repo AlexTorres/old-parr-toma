@@ -41,27 +41,28 @@ package co.oldparr.toma.view.userWallView
 				var userPhoto:ImageView = new ImageView();
 				var imageItem:ImageView = new ImageView();
 			
-				userPhoto.imageURL = FacebookConnection.USER_PHOTO_SMALL + fbservice.accessToken;
 				
-				if (fbservice.feedArray[j].type.toString() == "status")
+				
+				if (fbservice.feedArray[j].type.toString() == "status" ||fbservice.feedArray[j].type.toString() == "photo")
 				{
 					var wallStatusView:WallStatusView = new WallStatusView();
 					
 					if (fbservice.feedArray[j].icon != null)
 					{
-						FacebookConnection.FRIEND_PICTURE.replace("{0}",fbservice.feedArray[j].from.id)+fbservice.accessToken;
-						imageItem.imageURL = fbservice.feedArray[j].icon.toString()+"?access_token="+fbservice.accessToken;
-						imageItem.onLoad();
+						
+						//imageItem.imageURL = fbservice.feedArray[j].icon.toString()+"?access_token="+fbservice.accessToken;
+						//imageItem.onLoad();
 						wallStatusView.likes.photoVideoContainer.addChild(imageItem);
 					}
 					if (j == 0)
 					{
 						wallStatusView.spacer_mc.alpha = 0;
 					}
+					userPhoto.imageURL = FacebookConnection.FRIEND_PICTURE.replace("{0}",fbservice.feedArray[j].from.id)+fbservice.accessToken;
 					wallStatusView.photoContainer.addChild(userPhoto);
 					var dateItem:Date = DateUtil.iso8601ToDate(fbservice.feedArray[j].created_time.toString());
 					var dateString:String = dateItem.date + " de " + monthArray[dateItem.month] +" de " +dateItem.fullYear +" a las " + dateItem.hours + ":" + dateItem.minutes ;
-					trace(dateString);
+				
 					wallStatusView.likes.date_txt.text = dateString;
 					wallStatusView.likes.likeItem.x = wallStatusView.likes.date_txt.x + wallStatusView.likes.date_txt.width +5;
 					userPhoto.onLoad();

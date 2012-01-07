@@ -16,7 +16,7 @@ package co.oldparr.toma.model
 		private var _imagePath:String;
 		private var _xmlPath:String;
 		private var _swfPath:String;
-		public static const USER_INFO_POINT:Point = new Point(104.45,59.45);
+		public static const USER_INFO_POINT:Point = new Point(13.45,59.45);
 		
 		public function TomaModel() 
 		{
