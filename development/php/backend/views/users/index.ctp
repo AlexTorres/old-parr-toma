@@ -1,41 +1,72 @@
 <div class="page-header">
-  <h1>Usuarios</h1>
+  <h1>Users</h1>
 </div>
 
 <div class="row">
 
   <div class="span14">
-  
+    <div class="right">
+      <?php echo $this->Html->link('Download excel spreadsheet', array('action' => 'add'), array('class' => 'btn success')); ?>
+      <?php echo $this->Html->link(__('New User', true), array('action' => 'add'), array('class' => 'btn primary')); ?>
+      <br />
+      <br />
+    </div>
     <table class="bordered-table zebra-striped">
 			<tr>
-        <th><?php echo $this->Paginator->sort('id');?></th>
-        <th><?php echo $this->Paginator->sort('email');?></th>
-        <th><?php echo $this->Paginator->sort('name');?></th>
-        <th><?php echo $this->Paginator->sort('facebook_id');?></th>
-        <th><?php echo $this->Paginator->sort('current_city');?></th>
-        <th><?php echo $this->Paginator->sort('sex');?></th>
-        <th><?php echo $this->Paginator->sort('birth_date');?></th>
-        <th><?php echo $this->Paginator->sort('created');?></th>
-        <th><?php echo $this->Paginator->sort('updated_at');?></th>
-        <th class="actions"><?php __('Actions');?></th>
+        <th>User data</th>
+        <th>Other info</th>
+        <th>Options</th>
       </tr>
 
       <?php foreach ($users as $user): ?>
 
         <tr>
-          <td><?php echo $user['User']['id']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['email']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['name']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['facebook_id']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['current_city']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['sex']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['birth_date']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['created']; ?>&nbsp;</td>
-          <td><?php echo $user['User']['updated_at']; ?>&nbsp;</td>
-          <td class="actions">
-            <?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['id'])); ?>
-            <?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['id'])); ?>
-            <?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
+          <td>
+            <h2><?php echo $user['User']['name']; ?> </h2>
+            <a href="mailto:<?php echo $user['User']['email']?>"><?php echo $user['User']['email']?></a>
+            <br />
+            <strong>Facebook id</strong>: <?php echo $user['User']['facebook_id']; ?>
+
+            <hr />
+
+            <strong>City</strong>: <?php echo $user['User']['current_city']; ?> 
+            <br />
+
+            <strong>Sex</strong>: <?php echo $user['User']['sex']; ?> 
+            <br />
+
+            <strong>Birth date</strong>: <?php echo $user['User']['birth_date']; ?> 
+            <br />
+
+          </td>
+          <td>
+
+            <strong>Total logins</strong>: <span class="big">3</span>
+            <br />
+
+            <strong>Last login</strong>: 
+            <a href="#" rel="twipsy" title="<?php echo $user['User']['created'] ?>">
+              <?php echo $time->timeAgoInWords($user['User']['created']); ?>
+            </a>
+            <hr />
+
+            <strong>Created</strong>: 
+            <a href="#" rel="twipsy" title="<?php echo $user['User']['created'] ?>">
+              <?php echo $time->timeAgoInWords($user['User']['created']); ?>
+            </a>
+            <br />
+            <strong>Updated</strong>: 
+            <a href="#" rel="twipsy" title="<?php echo $user['User']['updated_at'] ?>">
+              <?php echo $time->timeAgoInWords($user['User']['updated_at']); ?> 
+            </a>
+          </td>
+          <td>
+            <?php if (Configure::read('debug') > 0): ?>
+              <?php echo $this->Html->link('View', array('action' => 'view', $user['User']['id']), array('class' => 'btn small')); ?>
+              <?php echo $this->Html->link('Edit', array('action' => 'edit', $user['User']['id']), array('class' => 'btn small')); ?>
+            <?php endif; ?>
+
+            <?php echo $this->Html->link('Delete', array('action' => 'delete', $user['User']['id']), array('class'=>'btn small danger'), sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
           </td>
         </tr>
 
@@ -52,7 +83,7 @@
 echo $this->Paginator->counter(array(
   'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
-?>	</p>
+?>
 
   <div class="paging">
     <?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
@@ -60,10 +91,3 @@ echo $this->Paginator->counter(array(
  |
     <?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
   </div>
-</div>
-<div class="actions">
-  <h3><?php __('Actions'); ?></h3>
-  <ul>
-    <li><?php echo $this->Html->link(__('New User', true), array('action' => 'add')); ?></li>
-  </ul>
-</div>

@@ -13,7 +13,17 @@
     <?php
       echo $this->Html->meta('icon');
 
+      echo $this->Javascript->link('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js');
+      echo $this->Javascript->link('bootstrap-modal');
+      echo $this->Javascript->link('bootstrap-alerts');
+      echo $this->Javascript->link('bootstrap-twipsy');
+      echo $this->Javascript->link('bootstrap-popover');
+      echo $this->Javascript->link('bootstrap-dropdown');
+      echo $this->Javascript->link('bootstrap-scrollspy');
+      echo $this->Javascript->link('bootstrap-tabs');
+      echo $this->Javascript->link('bootstrap-buttons');
       echo $this->Html->css('bootstrap');
+      echo $this->Html->css('http://fonts.googleapis.com/css?family=Open Sans&subset=latin');
 
       echo $scripts_for_layout;
     ?>
@@ -27,9 +37,9 @@
         <div class="container">
           <a class="brand" href="#">Oldparr toma</a>
           <ul class="nav">
-            <li><?php echo $html->link("Usuarios", array("controller" => "users", "action" => "index"))?></li>
-            <li><?php echo $html->link("Logs de acceso", array("controller" => "users", "action" => "index"))?></li>
-            <li><?php echo $html->link("Logs de error", array("controller" => "users", "action" => "index"))?></li>
+            <li><?php echo $html->link("Users", array("controller" => "users", "action" => "index"))?></li>
+            <li><?php echo $html->link("Access logs", array("controller" => "users", "action" => "index"))?></li>
+            <li><?php echo $html->link("Error logs", array("controller" => "users", "action" => "index"))?></li>
           </ul>
         </div>
       </div>

@@ -1,6 +1,12 @@
 <?php
 class UsersController extends AppController {
 
+  var $paginate = array(
+    'limit' => 10,
+    'order' => array(
+      'User.created' => 'DESC'
+    )
+  );
 	var $name = 'Users';
 
 	function index() {
