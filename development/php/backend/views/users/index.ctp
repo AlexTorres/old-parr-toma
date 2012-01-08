@@ -1,0 +1,69 @@
+<div class="page-header">
+  <h1>Usuarios</h1>
+</div>
+
+<div class="row">
+
+  <div class="span14">
+  
+    <table class="bordered-table zebra-striped">
+			<tr>
+        <th><?php echo $this->Paginator->sort('id');?></th>
+        <th><?php echo $this->Paginator->sort('email');?></th>
+        <th><?php echo $this->Paginator->sort('name');?></th>
+        <th><?php echo $this->Paginator->sort('facebook_id');?></th>
+        <th><?php echo $this->Paginator->sort('current_city');?></th>
+        <th><?php echo $this->Paginator->sort('sex');?></th>
+        <th><?php echo $this->Paginator->sort('birth_date');?></th>
+        <th><?php echo $this->Paginator->sort('created');?></th>
+        <th><?php echo $this->Paginator->sort('updated_at');?></th>
+        <th class="actions"><?php __('Actions');?></th>
+      </tr>
+
+      <?php foreach ($users as $user): ?>
+
+        <tr>
+          <td><?php echo $user['User']['id']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['email']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['name']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['facebook_id']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['current_city']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['sex']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['birth_date']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['created']; ?>&nbsp;</td>
+          <td><?php echo $user['User']['updated_at']; ?>&nbsp;</td>
+          <td class="actions">
+            <?php echo $this->Html->link(__('View', true), array('action' => 'view', $user['User']['id'])); ?>
+            <?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $user['User']['id'])); ?>
+            <?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $user['User']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
+          </td>
+        </tr>
+
+      <?php endforeach; ?>
+
+    </table>
+
+
+  </div>
+
+</div>
+
+<?php
+echo $this->Paginator->counter(array(
+  'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+));
+?>	</p>
+
+  <div class="paging">
+    <?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+   | 	<?php echo $this->Paginator->numbers();?>
+ |
+    <?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+  </div>
+</div>
+<div class="actions">
+  <h3><?php __('Actions'); ?></h3>
+  <ul>
+    <li><?php echo $this->Html->link(__('New User', true), array('action' => 'add')); ?></li>
+  </ul>
+</div>
