@@ -6,7 +6,7 @@ This service manages all the users registration for the App.
 After the Facebook login, Alex makes a call to the service with the
 following parameters via post.
 
-User struct:
+User struct:  
 __id:__ Autonum  
 __email:__ The user email (mandatory)  
 __name:__ The user name (mandatory)  
@@ -20,9 +20,9 @@ Services responses
 ==================
 The service can reply different messages according to each case:
 
-__New user logged in:__ new_user_logged_in
-__Old user logged in:__ old_user_logged_in
-__Login error:__ loggin_error
+__New user logged in:__ new_user_logged_in  
+__Old user logged in:__ old_user_logged_in  
+__Login error:__ loggin_error  
 
 `{message: 'message_string'}`  
 Where `'message_string'` is the message identifier.
@@ -45,3 +45,16 @@ Each time a user logs in, the system will log the following:
 * __user_id:__ This is the local id of the logged in user.  
 * __IP:__ The user IP address.  
 * __date:__ The date/time of the login event.  
+
+Backend access and features
+===========================
+The system will have a backend that allows an identified user to access the following:
+* __Download user data:__ A link to download an excel document, containing all the registered user data.
+* __View error log:__ A page in which an admin can see the error log.
+* __View login log:__ A page in which an admin can see the login log.
+
+
+Access account
+==============
+oldparrtoma@gmail.com  
+Old.Parr.2012

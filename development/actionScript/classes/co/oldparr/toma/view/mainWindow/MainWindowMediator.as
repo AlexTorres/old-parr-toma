@@ -1,13 +1,17 @@
 package co.oldparr.toma.view.mainWindow
 {
 	import co.oldparr.toma.event.RemoteEvent;
+	import co.oldparr.toma.event.ViewsEvent;
 	import co.oldparr.toma.model.TomaModel;
 	import co.oldparr.toma.remote.facebook.IFacebookConnection;
 	import co.oldparr.toma.remote.xmlReader.IXMLReader;
+	import co.oldparr.toma.view.friendsView.FriendsView;
+	import co.oldparr.toma.view.photosView.PhotosView;
+	import co.oldparr.toma.view.userInfoView.UserInfoView;
+	import co.oldparr.toma.view.userWallView.UserWallView;
 	import flash.events.Event;
 	import org.casalib.display.CasaSprite;
 	import org.robotlegs.mvcs.Mediator;
-	import com.demonsters.debugger.MonsterDebugger;
 	
 	
 	/**
@@ -27,10 +31,11 @@ package co.oldparr.toma.view.mainWindow
 		
 		private var faceBookColor:int = 0x465A99;
 		private var spacer:CasaSprite;
+		private var offSet:Number = 503;
 		
 		public function MainWindowMediator()
 		{
-			MonsterDebugger.initialize(this);
+		
 			super();
 		}
 		
@@ -64,12 +69,46 @@ package co.oldparr.toma.view.mainWindow
 			contextView.stage.dispatchEvent(new Event(Event.RESIZE));
 			fbservice.onLoadFacebookInfo();
 			eventMap.mapListener(eventDispatcher, RemoteEvent.ON__FACEBOOK_READY, onFBDataReady);
+			eventMap.mapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
 			
 		}
 		
+		private function onFinishUserPhoto(e:ViewsEvent):void 
+		{
+			eventMap.unmapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
+			view.sections.y = TomaModel.USER_INFO_POINT.y + e.data.height + 10;
+			var friendsView:FriendsView = new FriendsView();
+			friendsView.y = view.sections.y +view.sections.height;
+			friendsView.x = 9-offSet;
+			view.addChild(friendsView);
+			onAddPhotosView();
+			onAddWallView();
+			
+	
+			
+		}
+		
+		private function onAddWallView():void 
+		{
+			var userWallView:UserWallView = new UserWallView();
+			view.addChild(userWallView);
+			userWallView.x = 210.85-offSet;
+			userWallView.y = 280.95;
+		}
+		private function onAddPhotosView():void
+		{
+			var photosView:PhotosView = new PhotosView();
+			view.addChild(photosView);
+			photosView.y = 161.35;
+			photosView.x = 213.85-offSet;
+		}
 		private function onFBDataReady(e:RemoteEvent):void 
 		{
-			MonsterDebugger.trace(this,"hell yea");
+			
+			var userInfoView:UserInfoView=new UserInfoView;
+			view.addChild(userInfoView);
+			userInfoView.x = TomaModel.USER_INFO_POINT.x-offSet;
+			userInfoView.y = TomaModel.USER_INFO_POINT.y;
 		}
 		
 		private function onResize(e:Event):void 
@@ -82,6 +121,7 @@ package co.oldparr.toma.view.mainWindow
 				
 			}
 			
+			view.x=((contextView.stage.stageWidth)/2)
 		}
 	
 	}

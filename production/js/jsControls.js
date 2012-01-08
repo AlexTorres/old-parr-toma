@@ -44,8 +44,10 @@ function handleLoginOfNew(response)
 {
     if (response.status == "connected") 
     { 
+        $("#flashContent").css("min-height","1016");
         swfobject.embedSWF("assets/swf/OldParrToma.swf", "flashContent", "100%", "100%", "10.0", null, null, null, {name:"flashContent"});
         $(facebookConnection).css( "display", "none" );
+
     } 
     else 
     { //put the button for login 
