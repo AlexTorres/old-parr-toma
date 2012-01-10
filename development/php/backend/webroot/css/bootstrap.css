@@ -239,6 +239,7 @@ a:hover {
 }
 .pull-right {
   float: right;
+  margin-top: 5px;
 }
 .pull-left {
   float: left;

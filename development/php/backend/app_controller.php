@@ -36,5 +36,10 @@ class AppController extends Controller {
       'Html', 
       'Form', 
       'Time');
-  var $components = array('RequestHandler');
+  var $components = array('RequestHandler', 'Auth', 'Session');
+
+  function beforeFilter(){
+    $this->Auth->userModel = 'Admin';
+    $this->Auth->allow('add');
+  }
 } 

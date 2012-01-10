@@ -41,7 +41,13 @@
             <li><?php echo $html->link("Access logs", array("controller" => "alogs", "action" => "index"))?></li>
             <li><?php echo $html->link("Error logs", array("controller" => "elogs", "action" => "index"))?></li>
           </ul>
+          <div class="pull-right">
+            <?php if (!is_null($this->Session->read('Auth.Admin'))): ?>
+            <?php echo $html->link("Logout", array("controller" => "admins", "action" => "logout"), array('class'=>'btn danger small'))?>
+            <?php endif?>
+          </div>
         </div>
+
       </div>
     </div>
 

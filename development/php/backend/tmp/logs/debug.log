@@ -101,3 +101,5 @@
 2012-01-10 00:02:58 Notice: Notice (8): Undefined variable: alog in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/elogs/index.ctp, line 49]
 2012-01-10 00:06:05 Notice: Notice (8): Undefined variable: alog in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/elogs/index.ctp, line 49]
 2012-01-10 00:06:08 Notice: Notice (8): Undefined variable: alog in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/elogs/index.ctp, line 49]
+2012-01-10 14:44:18 Notice: Notice (8): Undefined property: View::$Auth in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/layouts/default.ctp, line 43]
+2012-01-10 14:44:36 Notice: Notice (8): Undefined property: View::$Auth in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/layouts/default.ctp, line 43]
