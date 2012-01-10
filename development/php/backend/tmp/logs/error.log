@@ -1,1 +1,2 @@
 2012-01-07 22:54:04 Warning: Warning (512): Method HtmlHelper::javascript does not exist in [/usr/share/php/cake/libs/view/helper.php, line 154]
+2012-01-08 00:06:29 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'count' at line 1</span> in [/usr/share/php/cake/libs/model/datasources/dbo_source.php, line 684]

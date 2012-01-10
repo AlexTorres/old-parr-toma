@@ -35,11 +35,11 @@
     <div class="topbar">
       <div class="fill">
         <div class="container">
-          <a class="brand" href="#">Oldparr toma</a>
+          <?php echo $html->link("Oldparr toma", array("controller" => "users", "action" => "index"), array('class'=>'brand'))?>
           <ul class="nav">
             <li><?php echo $html->link("Users", array("controller" => "users", "action" => "index"))?></li>
-            <li><?php echo $html->link("Access logs", array("controller" => "users", "action" => "index"))?></li>
-            <li><?php echo $html->link("Error logs", array("controller" => "users", "action" => "index"))?></li>
+            <li><?php echo $html->link("Access logs", array("controller" => "alogs", "action" => "index"))?></li>
+            <li><?php echo $html->link("Error logs", array("controller" => "elogs", "action" => "index"))?></li>
           </ul>
         </div>
       </div>

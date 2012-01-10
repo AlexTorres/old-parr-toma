@@ -5,12 +5,32 @@
 <div class="row">
 
   <div class="span14">
+
+    <div class="alert-message block-message info">
+
+      <a href="#" class="close">x</a>
+
+      <p>
+        <strong>Total users: </strong>
+        <span class="big"><?php echo $total_users?></span>
+      </p>
+
+    </div>
+
+
     <div class="right">
       <?php echo $this->Html->link('Download excel spreadsheet', array('action' => 'add'), array('class' => 'btn success')); ?>
       <?php echo $this->Html->link(__('New User', true), array('action' => 'add'), array('class' => 'btn primary')); ?>
       <br />
       <br />
     </div>
+
+    <div>
+      <?php echo $this->Paginator->prev('&larr; ' . __('Previous', true), array('class'=>'prev', 'escape'=>false), null, array('class'=>'prev disabled', 'escape'=>false ));?> 
+      <?php echo $this->Paginator->numbers();?>
+      <?php echo $this->Paginator->next(__('Next', true) . ' &rarr;', array('class'=>'next', 'escape'=>false), null, array('class' => 'next disabled', 'escape'=>false));?>
+    </div>
+
     <table class="bordered-table zebra-striped">
 			<tr>
         <th>User data</th>
@@ -81,13 +101,13 @@
 
 <?php
 echo $this->Paginator->counter(array(
-  'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+  'format' => __('Page %page% of %pages%', true)
 ));
 ?>
-
-  <div class="paging">
-    <?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-   | 	<?php echo $this->Paginator->numbers();?>
- |
-    <?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
-  </div>
+<br />
+<br />
+<div>
+  <?php echo $this->Paginator->prev('&larr; ' . __('Previous', true), array('class'=>'prev', 'escape'=>false), null, array('class'=>'prev disabled', 'escape'=>false ));?> 
+  <?php echo $this->Paginator->numbers();?>
+  <?php echo $this->Paginator->next(__('Next', true) . ' &rarr;', array('class'=>'next', 'escape'=>false), null, array('class' => 'next disabled', 'escape'=>false));?>
+</div>
