@@ -2,19 +2,32 @@ Users service
 =============
 This service manages all the users registration for the App.
 
+How to use the resource?
+========================
+Please follow this instructions in order to call the resource and create/login users.
 
+__Resource url:__ /users/add  
+`_method=POST`  
+`data['User']['name']=John Doe`  
+`data['User']['email']=john@doe.com`  
+`data['User']['facebookid']=123456789`  
+`data['User']['current_city']=Bogota`  
+`data['User']['sex']=Male`  
+`data['User']['birth_date']=Jan 1, 1900`  
+
+Parameters
+==========
 After the Facebook login, Alex makes a call to the service with the
 following parameters via post.
 
 User struct:  
 __id:__ Autonum  
-__email:__ The user email (mandatory)  
-__name:__ The user name (mandatory)  
-__facebook_id:__ The facebook id (mandatory)  
-__current_city:__ The city the user lives in (optional)  
-__sex:__ String representing the user sex (optional)  
-__birth_date:__ String representing the user bith date (optional). Check
-the string format, MM/DD/YYYY or what?  
+__email:__ The user email (mandatory)  -> Will accept any string  
+__name:__ The user name (mandatory)  -> Will accept any string  
+__facebookid:__ The facebook id (mandatory) -> Will accept any string  
+__current_city:__ The city the user lives in (optional) -> Will accept any string  
+__sex:__ String representing the user sex (optional) -> Will accept any string  
+__birth_date:__ String representing the user bith date (optional) -> Will accept any string  
 
 Services responses
 ==================
@@ -52,9 +65,3 @@ The system will have a backend that allows an identified user to access the foll
 * __Download user data:__ A link to download an excel document, containing all the registered user data.
 * __View error log:__ A page in which an admin can see the error log.
 * __View login log:__ A page in which an admin can see the login log.
-
-
-Access account
-==============
-oldparrtoma@gmail.com  
-Old.Parr.2012
