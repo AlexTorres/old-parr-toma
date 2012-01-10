@@ -11,7 +11,7 @@ class UsersController extends AppController {
 	var $name = 'Users';
 
 	function index() {
-		$this->User->recursive = 0;
+		$this->User->recursive = 1;
 		$this->set('users', $this->paginate());
     $this->set('total_users', $this->User->find('count'));
 	}
@@ -46,35 +46,34 @@ class UsersController extends AppController {
       }
 
       // Facebook ID present?
-      if(empty($user['User']['facebook_id'])) {
+      if(empty($user['User']['facebookid'])) {
         $message = $message.'No facebook id provided. ';
         $valid = false;
       }
 
 
       if($valid){
-        $this->User->create();
+        $user_exists = $this->User->findByEmail($this->data['User']['email']);
 
-        if ($this->User->save($this->data)) {
-          // TODO: Check if the user exists, if not, create it. If exists then
-          // create a login event.
+        if(empty($user_exists)){
+          // New user, create the user and the login event
+          $message = 'New user created. Login event created. ';
+          $this->User->save($this->data);
 
-          $this->set('type', 'success');
-          $this->set('reason', 'User logged in');
-
-        } else {
-
-          $message = $message . 'Could not save record to the database. ';
-
-          // Save the error event
-          $error_event['Elog']['reason'] = $message;
-          $error_event['Elog']['post_data'] = http_build_query($this->data);
-          $error_event['Elog']['ip'] = $this->RequestHandler->getClientIP(); 
-          $this->Elog->save($error_event);
-
-          $this->set('type', 'error');
-          $this->set('reason', $message);
+          $access_event['Alog']['user_id'] = $this->User->getLastInsertID();
+          $access_event['Alog']['ip'] = $this->RequestHandler->getClientIP(); 
+          $access_event['Alog']['post_data'] = http_build_query($this->data);
         }
+        else{
+          $message = 'Existing user. Login event created. ';
+          $access_event['Alog']['user_id'] = $user_exists['User']['id'];
+          $access_event['Alog']['ip'] = $this->RequestHandler->getClientIP(); 
+          $access_event['Alog']['post_data'] = http_build_query($this->data);
+        }
+
+        $this->Alog->save($access_event);
+        $this->set('type', 'success');
+        $this->set('reason', $message);
 
       }
       else {

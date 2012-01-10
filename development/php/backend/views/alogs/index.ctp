@@ -42,10 +42,26 @@
 
         <tr>
           <td>
-            <?php echo $alog['Alog']['user_id']; ?>
+            <h2><?php echo $alog['User']['name']; ?> </h2>
+            <a href="mailto:<?php echo $alog['User']['email']?>"><?php echo $alog['User']['email']?></a>
+            <br />
+            <strong>Facebook id</strong>: <?php echo $alog['User']['facebookid']; ?>
+
+            <hr />
+
+            <strong>City</strong>: <?php echo $alog['User']['current_city']; ?> 
+            <br />
+
+            <strong>Sex</strong>: <?php echo $alog['User']['sex']; ?> 
+            <br />
+
+            <strong>Birth date</strong>: <?php echo $alog['User']['birth_date']; ?> 
+            <br />
           </td>
           <td>
-            <?php echo $alog['Alog']['post_data']; ?>
+            <pre>
+              <?php echo rawurldecode($alog['Alog']['post_data']); ?>
+            </pre>
           </td>
           <td>
             <?php echo $alog['Alog']['ip']; ?>

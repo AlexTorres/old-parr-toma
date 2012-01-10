@@ -45,7 +45,9 @@
             <?php echo $elog['Elog']['reason']; ?>
           </td>
           <td>
-            <?php echo $elog['Elog']['post_data']; ?>
+            <pre>
+              <?php echo rawurldecode($elog['Elog']['post_data']); ?>
+            </pre>
           </td>
           <td>
             <?php echo $elog['Elog']['ip']; ?>

@@ -8,7 +8,7 @@
 	<?php
 		echo $this->Form->input('email');
 		echo $this->Form->input('name');
-		echo $this->Form->input('facebook_id');
+		echo $this->Form->input('facebookid');
 		echo $this->Form->input('current_city');
 		echo $this->Form->input('sex');
 		echo $this->Form->input('birth_date');

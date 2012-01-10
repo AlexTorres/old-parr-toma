@@ -45,7 +45,7 @@
             <h2><?php echo $user['User']['name']; ?> </h2>
             <a href="mailto:<?php echo $user['User']['email']?>"><?php echo $user['User']['email']?></a>
             <br />
-            <strong>Facebook id</strong>: <?php echo $user['User']['facebook_id']; ?>
+            <strong>Facebook id</strong>: <?php echo $user['User']['facebookid']; ?>
 
             <hr />
 
@@ -61,14 +61,19 @@
           </td>
           <td>
 
-            <strong>Total logins</strong>: <span class="big">3</span>
+            <?php $total_logins = count($user['Alog']); ?>
+            <strong>Total logins</strong>: 
+            <span class="big"><?php echo $total_logins ?></span>
             <br />
 
             <strong>Last login</strong>: 
-            <a href="#" rel="twipsy" title="<?php echo $user['User']['created'] ?>">
-              <?php echo $time->timeAgoInWords($user['User']['created']); ?>
-            </a>
-            <hr />
+            <?php if ($total_logins > 0): ?>
+              <a href="#" rel="twipsy" title="<?php echo $user['Alog'][$total_logins - 1]['created'] ?>">
+                <?php echo $time->timeAgoInWords($user['Alog'][$total_logins - 1]['created']); ?>
+              </a>
+              from <?php echo $user['Alog'][$total_logins - 1]['ip'] ?>
+              <hr />
+            <?php endif; ?>
 
             <strong>Created</strong>: 
             <a href="#" rel="twipsy" title="<?php echo $user['User']['created'] ?>">
