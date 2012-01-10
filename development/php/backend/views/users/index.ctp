@@ -8,8 +8,6 @@
 
     <div class="alert-message block-message info">
 
-      <a href="#" class="close">x</a>
-
       <p>
         <strong>Total users: </strong>
         <span class="big"><?php echo $total_users?></span>
@@ -20,7 +18,6 @@
 
     <div class="right">
       <?php echo $this->Html->link('Download excel spreadsheet', array('action' => 'add'), array('class' => 'btn success')); ?>
-      <?php echo $this->Html->link(__('New User', true), array('action' => 'add'), array('class' => 'btn primary')); ?>
       <br />
       <br />
     </div>

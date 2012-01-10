@@ -27,7 +27,7 @@ class UsersController extends AppController {
 	function add() {
     // print_r($_POST); die;
     $message = "";
-    // $this->layout = 'ajax';
+    $this->layout = 'ajax';
 
     if (!empty($this->data)) {
       $user = $this->data;
@@ -92,7 +92,7 @@ class UsersController extends AppController {
       // Create error event due to empty request.
       $message = 'The request was empty';
       $error_event['Elog']['reason'] = $message;
-      $error_event['Elog']['post_data'] = http_build_query($this->data);
+      $error_event['Elog']['post_data'] = "";
       $error_event['Elog']['ip'] = $this->RequestHandler->getClientIP(); 
       $this->Elog->save($error_event);
 

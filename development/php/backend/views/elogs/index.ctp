@@ -8,8 +8,6 @@
 
     <div class="alert-message block-message info">
 
-      <a href="#" class="close">x</a>
-
       <p>
         <strong>Logged events: </strong>
         <span class="big"><?php echo $total_events?></span>
