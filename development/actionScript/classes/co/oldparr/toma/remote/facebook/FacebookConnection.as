@@ -2,7 +2,7 @@ package co.oldparr.toma.remote.facebook
 {
 	import co.oldparr.toma.event.RemoteEvent;
 	import org.robotlegs.mvcs.Actor;
-	import com.demonsters.debugger.MonsterDebugger;
+
 	import org.casalib.util.StageReference;
 	import com.adobe.serialization.json.JSON;
 	import com.facebook.graph.Facebook;
@@ -31,7 +31,7 @@ package co.oldparr.toma.remote.facebook
 		private var tempArray:Array;
 		public function FacebookConnection()
 		{
-			MonsterDebugger.initialize(this);
+			
 			super();
 		}
 		
@@ -106,7 +106,7 @@ package co.oldparr.toma.remote.facebook
 		private function onUserFeed(result:Object, fail:Object):void
 		{
 			trace("noooo");
-			MonsterDebugger.trace(this,result);
+		
 			if (result)
 			{
 				
@@ -204,7 +204,7 @@ package co.oldparr.toma.remote.facebook
 			_lengthItems = value;
 			if (value == 0)
 			{
-				MonsterDebugger.trace(this,_feedArray);
+				
 				dispatch(new RemoteEvent(RemoteEvent.ON__FACEBOOK_READY));
 			}
 			

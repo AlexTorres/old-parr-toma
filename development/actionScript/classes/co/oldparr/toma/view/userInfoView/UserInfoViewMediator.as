@@ -85,7 +85,7 @@ package co.oldparr.toma.view.userInfoView
 		
 		private function onFinishUserPhoto(e:ViewsEvent):void 
 		{
-			
+			eventMap.unmapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
 			userPhoto.x = view.spacer.x - (userPhoto.width);
 			
 		}

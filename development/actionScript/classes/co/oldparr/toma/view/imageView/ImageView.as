@@ -1,6 +1,7 @@
 package co.oldparr.toma.view.imageView 
 {
 	import co.oldparr.toma.event.ViewsEvent;
+	import co.oldparr.toma.model.TomaModel;
 	import flash.display.Bitmap;
 	import flash.display.Loader;
 	import flash.events.Event;
@@ -21,6 +22,7 @@ package co.oldparr.toma.view.imageView
 	{
 		[Inject]
 		public var view:ImageView;
+
 		protected var imageLoad:Loader;
 		private var _imageURL:String;
 		public function ImageView() 
@@ -33,12 +35,15 @@ package co.oldparr.toma.view.imageView
 			
 			Security.loadPolicyFile("https://www.facebook.com/crossdomain.xml?__cb=55448555654");
 			Security.allowDomain("*");
+			
 
 			super();
+			
 		}
 		
 		public function onLoad():void
 		{
+			
 			var lc:LoaderContext = new LoaderContext();
 			lc.checkPolicyFile = true;
 			imageLoad = new Loader();
@@ -60,6 +65,7 @@ package co.oldparr.toma.view.imageView
 			var content:Bitmap = this.imageLoad.content as Bitmap;
 			content.smoothing = true;
 			this.addChild(content);
+			
 			this.dispatchEvent(new ViewsEvent(ViewsEvent.ON_IMAGE_FINISH_LOAD,true,true,this));
 		}
 		public function get imageURL():String 
