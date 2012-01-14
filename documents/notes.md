@@ -63,15 +63,15 @@ Facebook Share/Invite Application count service
 After the Facebook Share application feature.  makes a call to the service with the
 following parameters via post.
 
-__facebookid:__ The facebook id (mandatory) -> Will accept any string.
-__countShare:__ The count of the invites of the aplication (mandatory)-> Will accept any string .
+__facebookid:__ The facebook id (mandatory) -> Will accept any string  
+__countShare:__ The count of the invites of the aplication (mandatory)-> Will accept any string  
 
 Services responses
 ==================
 The service can reply different messages according to each case:
 
-__Successful:__ the_request_successful
-__Failed:__ the_request_fail
+__Successful:__ the_request_successful  
+__Failed:__ the_request_fail  
 __service error:__ service_error  
 
 Backend access and features
