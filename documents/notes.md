@@ -40,7 +40,6 @@ __Login error:__ loggin_error
 `{message: 'message_string'}`  
 Where `'message_string'` is the message identifier.
 
-
 Error Log
 =========
 Each time there is a "Loggin error" message, the system will log the
@@ -59,9 +58,26 @@ Each time a user logs in, the system will log the following:
 * __IP:__ The user IP address.  
 * __date:__ The date/time of the login event.  
 
+Facebook Share/Invite Application count service 
+===============================================
+After the Facebook Share application feature.  makes a call to the service with the
+following parameters via post.
+
+__facebookid:__ The facebook id (mandatory) -> Will accept any string.
+__countShare:__ The count of the invites of the aplication (mandatory)-> Will accept any string .
+
+Services responses
+==================
+The service can reply different messages according to each case:
+
+__Successful:__ the_request_successful
+__Failed:__ the_request_fail
+__service error:__ service_error  
+
 Backend access and features
 ===========================
 The system will have a backend that allows an identified user to access the following:
 * __Download user data:__ A link to download an excel document, containing all the registered user data.
 * __View error log:__ A page in which an admin can see the error log.
 * __View login log:__ A page in which an admin can see the login log.
+* __Download the Share/invite register: __ A link to download an excel document, containing all share/invite registration.
