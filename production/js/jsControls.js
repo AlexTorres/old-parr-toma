@@ -8,7 +8,7 @@ var PERMS = "email,publish_stream,offline_access,read_stream,friends_photos,frie
 $(document).on("ready", onStart);
 function onStart()
 {
-   
+  
    $("#facebookConnection").css( "display", "none" );  
   init();
 }
@@ -29,7 +29,9 @@ function handleLoginStatus(response)
    
     if (response.status == "connected") 
     { 
-        swfobject.embedSWF("assets/swf/OldParrToma.swf?rnd"+d.getTime(), "flashContent", "100%", "100%", "10.0", null, null, null, {name:"flashContent"});
+        $("body").css( "min-height", 900);
+        swfobject.embedSWF("assets/swf/Loader.swf?rnd="+d.getTime(), "flashContent", "100%", "962", "10.0", null, null, null, {name:"flashContent"});
+        $("#facebookConnection").css( "display", "none"); 
        
     } 
     else 
@@ -44,9 +46,9 @@ function handleLoginOfNew(response)
 {
     if (response.status == "connected") 
     { 
-        $("#flashContent").css("min-height","1016");
-        swfobject.embedSWF("assets/swf/OldParrToma.swf", "flashContent", "100%", "100%", "10.0", null, null, null, {name:"flashContent"});
-        $(facebookConnection).css( "display", "none" );
+        $("body").css( "min-height", 900);
+        swfobject.embedSWF("assets/swf/Loader.swf?rnd="+d.getTime(), "flashContent", "100%", "962", "10.0", null, null, null, {name:"flashContent"});
+        $("#facebookConnection").css( "display", "none" );
 
     } 
     else 
@@ -57,6 +59,10 @@ function handleLoginOfNew(response)
                                         
     }    
 
+}
+function onChageBGColor()
+{
+    $("body").css({backgroundColor: '#fff'});
 }
 
                        

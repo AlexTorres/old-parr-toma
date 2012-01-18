@@ -7,6 +7,9 @@ body
 {
 	margin:0;
 	padding:0;
+	background-color: #000;
+	
+	min-height: 800px;
 
 }
 #facebookConnection
@@ -17,6 +20,9 @@ body
 	width: 1420px;
 
 }
+
+
+
 #imageItem
 {
 	cursor: pointer;
