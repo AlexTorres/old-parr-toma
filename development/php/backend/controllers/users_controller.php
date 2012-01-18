@@ -1,31 +1,22 @@
 <?php
 class UsersController extends AppController {
 
-  var $uses = array('User', 'Elog', 'Alog');
+  var $uses = array('User', 'Elog', 'Alog', 'Referrer');
   var $paginate = array(
     'limit' => 10,
     'order' => array(
       'User.created' => 'DESC'
     )
   );
-	var $name = 'Users';
+  var $name = 'Users';
 
-	function index() {
-		$this->User->recursive = 1;
-		$this->set('users', $this->paginate());
+  function index() {
+    $this->User->recursive = 1;
+    $this->set('users', $this->paginate());
     $this->set('total_users', $this->User->find('count'));
-	}
+  }
 
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid user', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->set('user', $this->User->read(null, $id));
-	}
-
-	function add() {
-    // print_r($_POST); die;
+  function add() {
     $message = "";
     $this->layout = 'ajax';
 
@@ -101,24 +92,6 @@ class UsersController extends AppController {
     }
   }
 
-  function edit($id = null) {
-    if (!$id && empty($this->data)) {
-      $this->Session->setFlash(__('Invalid user', true));
-      $this->redirect(array('action' => 'index'));
-    }
-    if (!empty($this->data)) {
-      if ($this->User->save($this->data)) {
-        $this->Session->setFlash(__('The user has been saved', true));
-        $this->redirect(array('action' => 'index'));
-      } else {
-        $this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
-      }
-    }
-    if (empty($this->data)) {
-      $this->data = $this->User->read(null, $id);
-    }
-  }
-
   function delete($id = null) {
     if (!$id) {
       $this->Session->setFlash(__('Invalid id for user', true));
@@ -130,10 +103,6 @@ class UsersController extends AppController {
     }
     $this->Session->setFlash(__('User was not deleted', true));
     $this->redirect(array('action' => 'index'));
-  }
-  function admin_index() {
-    $this->User->recursive = 0;
-    $this->set('users', $this->paginate());
   }
 
 }

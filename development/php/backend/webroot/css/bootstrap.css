@@ -564,6 +564,7 @@ pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
+  width: 390px;
 }
 /* Forms.less
  * Base styles for various input types, form layouts, and states
