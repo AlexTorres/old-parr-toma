@@ -92,6 +92,12 @@ class UsersController extends AppController {
     }
   }
 
+  function export()
+  {
+    $logs = $this->User->find('all');
+    $this->set(compact('logs'));
+  }
+
   function delete($id = null) {
     if (!$id) {
       $this->Session->setFlash(__('Invalid id for user', true));

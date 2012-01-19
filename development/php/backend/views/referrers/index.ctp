@@ -7,7 +7,7 @@
   <div class="span14">
 
     <div class="right">
-      <?php echo $this->Html->link('Download excel spreadsheet', array('action' => 'add'), array('class' => 'btn success')); ?>
+      <?php echo $this->Html->link('Download excel spreadsheet', array('action' => 'export'), array('class' => 'btn success')); ?>
       <br />
       <br />
     </div>

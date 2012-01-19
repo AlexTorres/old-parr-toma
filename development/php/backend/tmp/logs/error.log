@@ -41,3 +41,5 @@
 2012-01-18 11:59:45 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Referrers.created' in 'order clause'</span> in [/usr/share/php/cake/libs/model/datasources/dbo_source.php, line 684]
 2012-01-18 12:00:07 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> 1054: Unknown column 'Referrers.created' in 'order clause'</span> in [/usr/share/php/cake/libs/model/datasources/dbo_source.php, line 684]
 2012-01-18 12:00:07 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/referrers/index.ctp, line 29]
+2012-01-19 10:52:12 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/elogs/export.ctp, line 22]
+2012-01-19 10:52:23 Warning: Warning (2): Invalid argument supplied for foreach() in [/home/juanda/desarrollos/old-parr-toma/development/php/backend/views/elogs/export.ctp, line 22]

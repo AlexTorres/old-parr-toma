@@ -16,6 +16,12 @@ class ReferrersController extends AppController {
    		$this->set('total_events', $this->Referrer->find('count'));
 	}
 
+	function export()
+	{
+		$logs = $this->Referrer->find('all');
+		$this->set(compact('logs'));
+	}
+
 	function add() {
 		$message = "";
 	    $this->layout = 'ajax';
@@ -46,7 +52,7 @@ class ReferrersController extends AppController {
 	      	else{
 	      		$user_exists = true;
 	      	}
-	      }
+	    }
 
 	      if($valid){
 	        if(!empty($user_exists)){
@@ -112,19 +118,6 @@ class ReferrersController extends AppController {
 		$this->set('type', 'error');
 		$this->set('reason', $message);
 	}
-}
-
-function delete($id = null) {
-	if (!$id) {
-		$this->Session->setFlash(__('Invalid id for alog', true));
-		$this->redirect(array('action'=>'index'));
-	}
-	if ($this->Alog->delete($id)) {
-		$this->Session->setFlash(__('Alog deleted', true));
-		$this->redirect(array('action'=>'index'));
-	}
-	$this->Session->setFlash(__('Alog was not deleted', true));
-	$this->redirect(array('action' => 'index'));
 }
 }
 ?>

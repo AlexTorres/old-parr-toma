@@ -35,7 +35,8 @@ class AppController extends Controller {
       'Javascript', 
       'Html', 
       'Form', 
-      'Time');
+      'Time',
+      'xls');
   var $components = array('RequestHandler', 'Auth', 'Session');
 
   function beforeFilter(){
