@@ -1,6 +1,7 @@
 package 
 {
 	
+	import co.oldparr.toma.event.RemoteEvent;
 	import co.oldparr.toma.TomaContext;
 	import flash.events.Event;
 	import org.casalib.display.CasaSprite;
@@ -28,8 +29,19 @@ package
 			stage.align = StageAlign.TOP_LEFT;
 			context = new TomaContext(this);
 			
+			
 			// entry point
 			
+		}
+		public function onReLoad():void
+		{
+			context.contextView.dispatchEvent(new RemoteEvent(RemoteEvent.ON_RELOAD,true,true));
+			
+		}
+		public function onShowFriends():void
+		{
+			trace("pasaaaa");
+			context.contextView.dispatchEvent(new RemoteEvent(RemoteEvent.ON_UI_FRIENDS,true,true));
 		}
 		
 	}

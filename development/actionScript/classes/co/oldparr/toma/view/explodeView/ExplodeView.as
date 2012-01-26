@@ -10,6 +10,8 @@ package co.oldparr.toma.view.explodeView
 	import org.flintparticles.common.actions.Fade;
 	import org.flintparticles.common.counters.Blast;
 	import org.flintparticles.common.counters.TimePeriod;
+	import org.flintparticles.common.initializers.ImageClass;
+	import org.flintparticles.common.initializers.ImageClasses;
 	import org.flintparticles.common.initializers.Lifetime;
 	import org.flintparticles.common.initializers.SharedImages;
 	import org.flintparticles.twoD.actions.Accelerate;
@@ -24,6 +26,8 @@ package co.oldparr.toma.view.explodeView
 	import org.flintparticles.twoD.zones.DiscSectorZone;
 	import flash.utils.getDefinitionByName;
 	import co.oldparr.view.explode.*;
+	import org.flintparticles.twoD.zones.LineZone;
+	import org.flintparticles.twoD.zones.RectangleZone;
 	
 	
 	
@@ -50,51 +54,65 @@ package co.oldparr.toma.view.explodeView
 			
 		}
 		
-		public function onCreateEmition(angle1:Number,angle2:Number,theX:Number,theY:Number):void
+		public function onCreateEmition(angle1:Number,angle2:Number,theX:Number,theY:Number,disc:Boolean=true):void
 		{
 			arrayClassesItems = new Array();
 		
-				arrayClassesItems.push(new ExplodePar0());
-				arrayClassesItems.push(new ExplodePar1());
-				arrayClassesItems.push(new ExplodePar2());
-				arrayClassesItems.push(new ExplodePar3());
-				arrayClassesItems.push(new ExplodePar4());
-				arrayClassesItems.push(new ExplodePar5());
-				arrayClassesItems.push(new ExplodePar6());
-				arrayClassesItems.push(new ExplodePar7());
-				arrayClassesItems.push(new ExplodePar8());
-				arrayClassesItems.push(new ExplodePar9());
-				arrayClassesItems.push(new ExplodePar10());
-				arrayClassesItems.push(new ExplodePar11());
-				arrayClassesItems.push(new ExplodePar12());
-				arrayClassesItems.push(new ExplodePar13());
-				arrayClassesItems.push(new ExplodePar14());
-				arrayClassesItems.push(new ExplodePar15());
-				arrayClassesItems.push(new ExplodePar16());
-				arrayClassesItems.push(new ExplodePar17());
-				arrayClassesItems.push(new ExplodePar18());
-				arrayClassesItems.push(new ExplodePar19());
-				arrayClassesItems.push(new ExplodePar20());
-				arrayClassesItems.push(new ExplodePar21());
-				arrayClassesItems.push(new ExplodePar22());
+				arrayClassesItems.push(ExplodePar0);
+				arrayClassesItems.push(ExplodePar1);
+				arrayClassesItems.push(ExplodePar2);
+				arrayClassesItems.push(ExplodePar3);
+				arrayClassesItems.push(ExplodePar4);
+				arrayClassesItems.push(ExplodePar5);
+				arrayClassesItems.push(ExplodePar6);
+				arrayClassesItems.push(ExplodePar7);
+				arrayClassesItems.push(ExplodePar8);
+				arrayClassesItems.push(ExplodePar9);
+				arrayClassesItems.push(ExplodePar10);
+				arrayClassesItems.push(ExplodePar11);
+				arrayClassesItems.push(ExplodePar12);
+				arrayClassesItems.push(ExplodePar13);
+				arrayClassesItems.push(ExplodePar14);
+				arrayClassesItems.push(ExplodePar15);
+				arrayClassesItems.push(ExplodePar16);
+				arrayClassesItems.push(ExplodePar17);
+				arrayClassesItems.push(ExplodePar18);
+				arrayClassesItems.push(ExplodePar19);
+				arrayClassesItems.push(ExplodePar20);
+				arrayClassesItems.push(ExplodePar21);
+				arrayClassesItems.push(ExplodePar22);
 			trace("rata");
 			emitter = new Emitter2D();
-			emitter.counter = new TimePeriod(400, 20);
-			emitter.addInitializer( new SharedImages(arrayClassesItems));
-			emitter.addInitializer( new Velocity( new DiscSectorZone( new Point( 0, 0 ), 700, 700, angle1, angle2) ) );
-			emitter.addInitializer( new Lifetime( 2 ) );
+			emitter.counter = new TimePeriod(300, 20);
+			emitter.addInitializer( new ImageClasses(arrayClassesItems));
+			var renderer:BitmapRenderer;
+			if (disc)
+			{
+				emitter.addInitializer( new Lifetime( 1.5 ) );
+				emitter.addInitializer( new Velocity( new DiscSectorZone( new Point( 0, 0 ), 900, 900, angle1, angle2) ) );
+				emitter.addAction( new LinearDrag(0.3) );
+				emitter.addAction( new Accelerate(10, -100 ));
+				renderer = new BitmapRenderer( new Rectangle( 0, -100, 500, 800 ) );
+			}
+			else
+			{
+				emitter.addInitializer( new Lifetime( 3 ) );
+				emitter.addInitializer( new Velocity(new RectangleZone( -500, 0, 500, 500)));
+				renderer = new BitmapRenderer( new Rectangle( 0, 0, 1000, 1000 ) );
+			}
+			
 			emitter.addAction( new Age(  ) );
 			emitter.addAction( new Move() );
-			//emitter.addAction( new Fade() );
-			emitter.addAction(new Rotate());
-			emitter.addAction( new Accelerate(10,-100 ));
-			emitter.addAction( new LinearDrag(0.6) );
-			emitter.addAction(new Friction(50));
-			emitter.addAction(new SpeedLimit(400));
+			emitter.addAction( new Fade() );
+			
+			
+			
+			//emitter.addAction(new Friction(50));
+			emitter.addAction(new SpeedLimit(500));
 			//emitter.addAction(new GravityWell(10000,0,50,1));
 			//emitter.addEventListener( EmitterEvent.EMITTER_EMPTY, restart, false, 0, true );
 
-			var renderer:BitmapRenderer = new BitmapRenderer( new Rectangle( 0, -100, 500, 600 ) );
+			
 			//renderer.addFilter( new BlurFilter( 2, 2, 1 ) );
 			//renderer.addFilter( new ColorMatrixFilter( [ 1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0.95,0 ] ) );
 			renderer.addEmitter( emitter );

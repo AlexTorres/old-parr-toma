@@ -1,9 +1,12 @@
 package co.oldparr.toma.view.userWallView
 {
+	import co.oldparr.toma.event.RemoteEvent;
 	import co.oldparr.toma.remote.facebook.FacebookConnection;
 	import co.oldparr.toma.remote.facebook.IFacebookConnection;
 	import co.oldparr.toma.view.imageView.ImageView;
 	import co.oldparr.toma.view.userWallView.WallStatus.WallStatusView;
+	import com.greensock.easing.Quint;
+	import com.greensock.TweenMax;
 	import flash.events.Event;
 	import org.casalib.util.DateUtil;
 	import org.robotlegs.mvcs.Mediator;
@@ -34,6 +37,12 @@ package co.oldparr.toma.view.userWallView
 		{
 			removeViewListener(Event.ADDED_TO_STAGE, init);
 			populateWall();
+			eventMap.mapListener(eventDispatcher, RemoteEvent.ON_SHOW_HATS, onAnimateItem);
+		}
+		
+		private function onAnimateItem(e:RemoteEvent):void 
+		{
+			TweenMax.to(view, 0.8, { y:view.y + 200 , ease:Quint.easeOut } );
 		}
 		
 		private function populateWall():void
@@ -43,8 +52,21 @@ package co.oldparr.toma.view.userWallView
 				trace(fbservice.feedArray[j].type);
 				var userPhoto:ImageView = new ImageView();
 				//var imageItem:ImageView = new ImageView();
+				var stringMoarr:String="";
 				
-				if (fbservice.feedArray[j].type.toString() == "status" || fbservice.feedArray[j].type.toString() == "photo")
+				if (fbservice.feedArray[j].message !=null)
+				{
+					stringMoarr = fbservice.feedArray[j].message;
+				}
+				else
+				{
+					if (fbservice.feedArray[j].description != null)
+					{
+						stringMoarr = fbservice.feedArray[j].description;
+					}
+				}
+				
+				if (stringMoarr != "")
 				{
 					var wallStatusView:WallStatusView = new WallStatusView();
 					
@@ -72,11 +94,12 @@ package co.oldparr.toma.view.userWallView
 					wallStatusView.likes.likeItem.x = wallStatusView.likes.date_txt.x + wallStatusView.likes.date_txt.width + 5;
 					userPhoto.onLoad();
 					wallStatusView.title_txt.text = (fbservice.userObject.name != null) ? fbservice.feedArray[j].from.name : "";
-					wallStatusView.text_txt.text = fbservice.feedArray[j].message.toString();
+					wallStatusView.text_txt.text = stringMoarr;
 					wallStatusView.likes.y = wallStatusView.text_txt.y + wallStatusView.text_txt.height;
 					wallStatusView.y = view.height + 20;
 					view.addChild(wallStatusView);
 				}
+				
 				/*else
 				   {
 				   var wallLinkView:WallLinkView = new WallLinkView();

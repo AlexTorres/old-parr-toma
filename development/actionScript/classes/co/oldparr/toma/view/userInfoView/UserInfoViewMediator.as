@@ -7,7 +7,9 @@ package co.oldparr.toma.view.userInfoView
 	import flash.events.Event;
 	import flash.text.TextFieldAutoSize;
 	import org.robotlegs.mvcs.Mediator;
-	
+	import com.greensock.TweenMax;
+	import com.greensock.easing.Bounce;
+	import co.oldparr.toma.event.RemoteEvent;
 	
 	/**
 	 * ...
@@ -70,6 +72,15 @@ package co.oldparr.toma.view.userInfoView
 			onLoadUserPhoto();
 			
 			
+		view.sombrero.scaleX = 0;
+			view.sombrero.scaleY = 0;
+			//eventMap.mapListener(eventDispatcher, RemoteEvent.ON_SHOW_HATS, onShowHats);
+		}
+		
+		private function onShowHats(e:RemoteEvent):void 
+		{
+			view.setChildIndex(view.sombrero, view.numChildren - 1);
+			 TweenMax.to(view.sombrero,0.8,{scaleX:1,scaleY:1,ease:Bounce.easeOut,delay:Math.random()*0.8})
 		}
 		
 		private function onLoadUserPhoto():void 
@@ -87,6 +98,7 @@ package co.oldparr.toma.view.userInfoView
 		{
 			eventMap.unmapListener(eventDispatcher, ViewsEvent.ON_IMAGE_FINISH_LOAD, onFinishUserPhoto);
 			userPhoto.x = view.spacer.x - (userPhoto.width);
+			view.sombrero.x = userPhoto.x +userPhoto.width / 2;
 			
 		}
 		

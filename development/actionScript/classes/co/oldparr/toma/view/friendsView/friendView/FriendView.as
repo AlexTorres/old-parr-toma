@@ -13,6 +13,7 @@ package co.oldparr.toma.view.friendsView.friendView
 		
 		private var _friendName:String
 		private var _urlImageFriend:String;
+	
 		public function FriendView() 
 		{
 			

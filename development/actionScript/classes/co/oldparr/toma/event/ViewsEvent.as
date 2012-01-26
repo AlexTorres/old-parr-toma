@@ -9,9 +9,15 @@ package co.oldparr.toma.event
 	 */
 	public class ViewsEvent extends Event implements ICustomEvent
 	{
+		
 		public static const ON_IMAGE_FINISH_LOAD :String = "on_image_finish_Load";
 		public static const ON_FRIEND_USER_URL :String = "on_friend_user_URL";
 		public static const ON_FRIEND_USER_LOAD :String = "on_friend_user_load";
+		public static const ON_LOAD_COMPLETE_ALL:String = "on_Complete_All";
+		public static const ON_ANIMATION_FINSHED:String = "on_animation_finish";
+		public static const ON_TRACK_INTERMEDIATE:String = "on_track_intermediate";
+		
+		
 		private var _data:Object;
 		public function ViewsEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false,data:Object=null) 
 		{ 

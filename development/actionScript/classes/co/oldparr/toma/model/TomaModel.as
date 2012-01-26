@@ -18,6 +18,8 @@ package co.oldparr.toma.model
 		private var _swfPath:String;
 		private var _imageCount:Number = 0;
 		private var _loadCount:Number = 0;
+		private var _onUplodaPhotoYet:Boolean = false;
+		private var _onLoadVideo:Boolean = false;
 		public static const USER_INFO_POINT:Point = new Point(13.45,59.45);
 		
 		public function TomaModel() 
@@ -103,6 +105,26 @@ package co.oldparr.toma.model
 		public function set loadCount(value:Number):void 
 		{
 			_loadCount = value;
+		}
+		
+		public function get onUplodaPhotoYet():Boolean 
+		{
+			return _onUplodaPhotoYet;
+		}
+		
+		public function set onUplodaPhotoYet(value:Boolean):void 
+		{
+			_onUplodaPhotoYet = value;
+		}
+		
+		public function get onLoadVideo():Boolean 
+		{
+			return _onLoadVideo;
+		}
+		
+		public function set onLoadVideo(value:Boolean):void 
+		{
+			_onLoadVideo = value;
 		}
 		
 		
